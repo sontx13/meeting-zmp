@@ -48,7 +48,7 @@ const Personal: FC = () => {
             right: (
               <Box flex>
                 <Text.Header className="flex-1 items-center font-normal">
-                  Lịch sử đơn hàng
+                  Lịch sử
                 </Text.Header>
                 <Icon icon="zi-chevron-right" />
               </Box>
@@ -76,7 +76,7 @@ const Other: FC = () => {
             right: (
               <Box flex>
                 <Text.Header className="flex-1 items-center font-normal">
-                  Đánh giá đơn hàng
+                  Đánh giá
                 </Text.Header>
                 <Icon icon="zi-chevron-right" />
               </Box>

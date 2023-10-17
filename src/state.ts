@@ -5,8 +5,6 @@ import matchaIcon from "static/category-matcha.svg";
 import foodIcon from "static/category-food.svg";
 import milkteaIcon from "static/category-milktea.svg";
 import drinksIcon from "static/category-drinks.svg";
-import breadIcon from "static/category-bread.svg";
-import juiceIcon from "static/category-juice.svg";
 import logo from "static/logo.png";
 import { Category, CategoryId } from "types/category";
 import { Product, Variant } from "types/product";
@@ -25,13 +23,11 @@ export const userState = selector({
 export const categoriesState = selector<Category[]>({
   key: "categories",
   get: () => [
-    { id: "coffee", name: "Cà phê", icon: coffeeIcon },
-    { id: "matcha", name: "Trà xanh", icon: matchaIcon },
-    { id: "food", name: "Đồ ăn vặt", icon: foodIcon },
-    { id: "milktea", name: "Trà sữa", icon: milkteaIcon },
-    { id: "drinks", name: "Giải khát", icon: drinksIcon },
-    { id: "bread", name: "Bánh mỳ", icon: breadIcon },
-    { id: "juice", name: "Nước ép", icon: juiceIcon },
+    { id: "vnptbg", name: "VNPT BG", icon: coffeeIcon },
+    { id: "bdvbg", name: "Ban dân vận BG", icon: matchaIcon },
+    { id: "tinhdoanbg", name: "Tỉnh đoàn BG", icon: foodIcon },
+    { id: "ubndbg", name: "UBND tỉnh BG", icon: milkteaIcon },
+    { id: "ldldbg", name: "Liên đoàn lao động BG", icon: drinksIcon },
   ],
 });
 
@@ -114,79 +110,79 @@ export const productsState = selector<Product[]>({
     return [
       {
         id: 1,
-        name: "Caramel Latte",
+        name: "Meeting 1",
         price: 35000,
         image: getDummyImage("product-square-1.jpg"),
         description,
-        categoryId: ["coffee", "drinks"],
+        categoryId: ["vnptbg"],
         variants,
       },
       {
         id: 2,
-        name: "Mocha Frappuccino",
+        name: "Meeting 2",
         price: 45000,
         image: getDummyImage("product-square-2.jpg"),
         description,
-        categoryId: ["coffee"],
+        categoryId: ["vnptbg"],
         variants,
       },
       {
         id: 3,
-        name: "Grilled Pork Banh Mi",
+        name: "Meeting 3",
         price: 30000,
         image: getDummyImage("product-square-3.jpg"),
         description,
-        categoryId: ["food", "bread"],
+        categoryId: ["tinhdoanbg"],
         variants,
       },
       {
         id: 4,
-        name: "Pizza",
+        name: "Meeting 4",
         price: 28000,
         image: getDummyImage("product-square-4.jpg"),
         description,
-        categoryId: ["food"],
+        categoryId: ["tinhdoanbg"],
         variants,
       },
       {
         id: 5,
-        name: "Vanilla Latte",
+        name: "Meeting 5",
         price: 35000,
         image: getDummyImage("product-square-5.jpg"),
         description,
-        categoryId: ["coffee", "matcha"],
+        categoryId: ["bdvbg"],
         variants,
       },
       {
         id: 6,
-        name: "Caramel Macchiato",
+        name: "Meeting 6",
         price: 38000,
         image: getDummyImage("product-square-6.jpg"),
         description,
-        categoryId: ["coffee", "milktea"],
+        categoryId: ["ubndbg"],
         variants,
       },
       {
         id: 7,
-        name: "Espresso",
+        name: "Meeting 7",
         price: 32000,
         image: getDummyImage("product-square-7.jpg"),
         description,
-        categoryId: ["coffee"],
+        categoryId: ["vnptbg"],
         variants,
       },
       {
         id: 8,
-        name: "Green Tea Latte",
+        name: "Meeting 8",
         price: 25000,
         image: getDummyImage("product-square-8.jpg"),
         description,
-        categoryId: ["matcha"],
+        categoryId: ["bdvbg"],
         variants,
       },
       {
         id: 9,
-        name: "Bộ 3 Blue Corner Coffee siêu HOT",
+        name: "Meeting 9",
         image: getDummyImage("product-rect-1.jpg"),
         price: 25000,
         sale: {
@@ -194,12 +190,12 @@ export const productsState = selector<Product[]>({
           percent: 0.2,
         },
         description,
-        categoryId: ["coffee", "milktea", "drinks"],
+        categoryId: ["ubndbg"],
         variants,
       },
       {
         id: 10,
-        name: "Combo Hi Tea Aroma",
+        name: "Meeting 10",
         image: getDummyImage("product-rect-2.jpg"),
         price: 57000,
         sale: {
@@ -207,16 +203,16 @@ export const productsState = selector<Product[]>({
           amount: 7000,
         },
         description,
-        categoryId: ["coffee", "drinks"],
+        categoryId: ["vnptbg"],
         variants,
       },
       {
         id: 11,
-        name: "Milk Tea Combo",
+        name: "Meeting 11",
         price: 55000,
         image: getDummyImage("product-rect-3.jpg"),
         description,
-        categoryId: ["milktea"],
+        categoryId: ["ubndbg"],
         variants,
         sale: {
           type: "percent",
@@ -237,7 +233,7 @@ export const recommendProductsState = selector<Product[]>({
 
 export const selectedCategoryIdState = atom({
   key: "selectedCategoryId",
-  default: "coffee",
+  default: "vnptbg",
 });
 
 export const productsByCategoryState = selectorFamily<Product[], CategoryId>({
@@ -290,8 +286,8 @@ export const notificationsState = atom<Notification[]>({
     {
       id: 2,
       image: logo,
-      title: "Giảm 50% lần đầu mua hàng",
-      content: "Nhập WELCOME để được giảm 50% giá trị đơn hàng đầu tiên order",
+      title: "Bình chọn cuộc họp",
+      content: "Hãy thăm gia bình chọn cho cuộc họp",
     },
   ],
 });
