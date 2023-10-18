@@ -7,7 +7,6 @@ import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 const CategoryPicker: FC = () => {
   /*sontx- get donvi*/
     const [displayCompany, setDisplayCompany] = useState<ICompany[] | null>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const [current, setCurrent] = useState(1);
     const [pageSize, setPageSize] = useState(10);
@@ -20,7 +19,6 @@ const CategoryPicker: FC = () => {
     }, [current, pageSize, filter, sortQuery]);
 
    const fetchCompany = async () => {
-        setIsLoading(true)
         let query = `current=${current}&pageSize=${pageSize}`;
         if (filter) {
             query += `&${filter}`;
@@ -36,7 +34,6 @@ const CategoryPicker: FC = () => {
             setDisplayCompany(res.data.result);
             setTotal(res.data.meta.total)
         }
-        setIsLoading(false)
     }
 
 

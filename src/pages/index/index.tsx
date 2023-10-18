@@ -21,7 +21,7 @@ const HomePage: React.FunctionComponent = () => {
         <Divider />
         {/* <Recommend /> */}
         <Divider />
-        {/* <ProductList /> */}
+        <ProductList /> 
         <Divider />
       </Box>
     </Page>

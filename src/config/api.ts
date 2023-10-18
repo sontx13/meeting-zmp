@@ -107,7 +107,7 @@ export const callDeleteJob = (id: string) => {
 }
 
 export const callFetchJob = (query: string) => {
-    return axios.get<IBackendRes<IModelPaginate<IJob>>>(`/api/v1/jobs?${query}`);
+    return axios.get(`/api/v1/jobs?${query}`);
 }
 
 export const callFetchJobById = (id: string) => {
