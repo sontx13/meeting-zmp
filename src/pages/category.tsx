@@ -83,7 +83,7 @@ const CategoryProducts: FC<{ company: ICompany }> = ({ company }) => {
     return (
       <Box className="flex-1 bg-background p-4 flex justify-center items-center">
         <Text size="xSmall" className="text-gray">
-          Không có sản phẩm trong danh mục
+          Không có cuộc họp trong danh mục
         </Text>
       </Box>
     );

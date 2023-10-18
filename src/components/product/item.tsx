@@ -1,14 +1,19 @@
-import { FinalPrice } from "components/display/final-price";
 import React, { FC } from "react";
-import { Box, Text } from "zmp-ui";
+import { Box, Text, useNavigate } from "zmp-ui";
 import { ProductPicker } from "./picker";
 import { IJob } from "types/backend";
 
 export const ProductItem: FC<{ product: IJob }> = ({ product }) => {
+   const navigate = useNavigate();
+
+  const gotoCart = (categoryId: string) => {
+    navigate("/cart");
+  };
+
   return (
     <ProductPicker product={product}>
-      {({ open }) => (
-        <div className="space-y-2" onClick={open}>
+      {() => (
+        <div className="space-y-2" onClick={() => gotoCart(product._id!=undefined ?product._id:"")}>
           <Box className="w-full aspect-square relative">
             <img
               loading="lazy"

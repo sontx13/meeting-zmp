@@ -18,7 +18,7 @@ export const CartPreview: FC = () => {
         className="min-w-[120px] flex-none"
       >
         <Text className="text-gray" size="xSmall">
-          {quantity} sản phẩm
+          {quantity} cuộc họp
         </Text>
         <Text.Title size="large">
           <DisplayPrice>{totalPrice}</DisplayPrice>

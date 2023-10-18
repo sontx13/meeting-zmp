@@ -12,7 +12,7 @@ const CartPage: FC = () => {
 
   return (
     <Page className="flex flex-col">
-      <Header title="Giỏ hàng" showBackIcon={false} />
+      <Header title="Thông tin cuộc họp" showBackIcon={false} />
       <CartItems />
       <Delivery />
       <Divider size={12} />
