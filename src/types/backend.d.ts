@@ -2,7 +2,7 @@ export interface IBackendRes<T> {
     error?: string | string[];
     message: string;
     statusCode: number | string;
-    data?: T;
+    data: T;
 }
 
 export interface IModelPaginate<T> {
@@ -49,6 +49,13 @@ export interface ICompany {
     createdAt?: string;
     updatedAt?: string;
 }
+
+export interface ICompanyJob {
+    _id: string;
+    name: string;
+    logo: string;
+}
+
 
 
 

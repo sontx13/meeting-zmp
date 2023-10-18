@@ -1,4 +1,4 @@
-import { IBackendRes, ICompany, IAccount, IUser, IModelPaginate, IGetAccount, IJob, IResume, IPermission, IRole, ISubscribers } from 'types/backend';
+import { IBackendRes, ICompany, IAccount, IUser, IModelPaginate, IGetAccount, IJob, IResume, IPermission, IRole, ISubscribers, ICompanyJob } from 'types/backend';
 import axios from 'config/axios-customize';
 
 /**
@@ -62,7 +62,7 @@ export const callDeleteCompany = (id: string) => {
 }
 
 export const callFetchCompany = (query: string) => {
-    return axios.get<IBackendRes<IModelPaginate<ICompany>>>(`/api/v1/companies?${query}`);
+    return axios.get(`/api/v1/companies?${query}`);
 }
 
 export const callFetchCompanyById = (id: string) => {
@@ -112,6 +112,12 @@ export const callFetchJob = (query: string) => {
 
 export const callFetchJobById = (id: string) => {
     return axios.get<IBackendRes<IJob>>(`/api/v1/jobs/${id}`);
+}
+
+export const callFetchJobByCompany = (company: ICompany) => {
+    console.log("callFetchJobByCompany");
+     console.log(company);
+    return axios.post(`/api/v1/jobs/by-company`,{ ...company });
 }
 
 /**

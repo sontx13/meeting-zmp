@@ -1,5 +1,5 @@
 import { ProductItem } from "components/product/item";
-import { callFetchCompany } from "config/api";
+import { callFetchCompany, callFetchJobByCompany } from "config/api";
 import React, { FC, Suspense, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import {
@@ -7,7 +7,7 @@ import {
   productsByCategoryState,
   selectedCategoryIdState,
 } from "state";
-import { IBackendRes, ICompany, IModelPaginate, } from 'types/backend';
+import { ICompany, ICompanyJob, IJob } from 'types/backend';
 import { Box, Header, Page, Tabs, Text } from "zmp-ui";
 
 const CategoryPicker: FC = () => {
@@ -36,14 +36,15 @@ const CategoryPicker: FC = () => {
         }
 
         const res = await callFetchCompany(query);
-        console.log(res);
-        console.log(res.data);
+        //console.log(res);
+      
         if (res && res.data) {
             setDisplayCompany(res.data.result);
             setTotal(res.data.meta.total)
         }
         setIsLoading(false)
     }
+
 
   /*sontx- get donvi*/
 
@@ -53,10 +54,11 @@ const CategoryPicker: FC = () => {
       scrollable
       className="category-tabs"
     >
-      {displayCompany?.map((category) => (
-        <Tabs.Tab key={category._id} label={category.name}>
+      {displayCompany?.map((company) => (
+        <Tabs.Tab key={company._id} label={company.name}>
           <Suspense>
-            <CategoryProducts categoryId={category._id} />
+            <CategoryProducts company={company} 
+            />
           </Suspense>
         </Tabs.Tab>
       ))}
@@ -64,12 +66,26 @@ const CategoryPicker: FC = () => {
   );
 };
 
-const CategoryProducts: FC<{ categoryId: string }> = ({ categoryId }) => {
-  const productsByCategory = useRecoilValue(
-    productsByCategoryState(categoryId)
-  );
+const CategoryProducts: FC<{ company: ICompany }> = ({ company }) => {
+  //console.log(company)
+  const [displayJobByCompany, setDisplayJobByCompany] = useState<IJob[] | null>(null);
 
-  if (productsByCategory.length === 0) {
+  useEffect(() => {
+        fetchJobByCompany(company);
+    }, [company]);
+
+   const fetchJobByCompany = async (company: ICompany) => {
+       
+        const res_job = await callFetchJobByCompany(company);
+        console.log(res_job);
+      
+        if (res_job && res_job.data) {
+            setDisplayJobByCompany(res_job.data.result);
+        }
+    }
+  
+
+  if (displayJobByCompany?.length === 0) {
     return (
       <Box className="flex-1 bg-background p-4 flex justify-center items-center">
         <Text size="xSmall" className="text-gray">
@@ -80,8 +96,11 @@ const CategoryProducts: FC<{ categoryId: string }> = ({ categoryId }) => {
   }
   return (
     <Box className="bg-background grid grid-cols-2 gap-4 p-4">
-      {productsByCategory.map((product) => (
-        <ProductItem key={product.id} product={product} />
+      {displayJobByCompany?.map((job) => (
+        // <ProductItem key={job._id} product={job} />
+        <Text>
+          {job.name}
+        </Text>
       ))}
     </Box>
   );
