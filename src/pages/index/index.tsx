@@ -14,14 +14,14 @@ const HomePage: React.FunctionComponent = () => {
       <Welcome />
       <Box className="flex-1 overflow-auto">
         <Inquiry />
-        <Banner />
+        {/* <Banner /> */}
         <Suspense>
           <Categories />
         </Suspense>
         <Divider />
-        <Recommend />
+        {/* <Recommend /> */}
         <Divider />
-        <ProductList />
+        {/* <ProductList /> */}
         <Divider />
       </Box>
     </Page>
