@@ -115,8 +115,6 @@ export const callFetchJobById = (id: string) => {
 }
 
 export const callFetchJobByCompany = (company: ICompany) => {
-    console.log("callFetchJobByCompany");
-     console.log(company);
     return axios.post(`/api/v1/jobs/by-company`,{ ...company });
 }
 
